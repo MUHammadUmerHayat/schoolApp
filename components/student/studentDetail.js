@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AppHeader from "../header";
 import {View} from "react-native"
 import StudentProfile from "./studentProfile";
 import StudentMaterialList from "./studentMaterialList"
@@ -9,21 +8,16 @@ import {
 import StudentMaterialLiSt from './studentMaterialList';
 class StudentDetail extends Component {
     render() {
+        const {navigation}=this.props
         return (
             <Container style={style.container}>
-                <AppHeader iconName="arrow-back" title="Student"/>
-                <StudentProfile student={this.props}/>
-                <Content>
-                <StudentMaterialList/>
-                </Content>
+                <StudentProfile student={this.props.route.params}/>
+                <StudentMaterialLiSt goTo={navigation}/>
             </Container>
         );
     }
 }
 const style={
-    container:{
-        paddingTop:20,
-    }
 }
 
 

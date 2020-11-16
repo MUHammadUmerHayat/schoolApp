@@ -40,7 +40,7 @@ class Login extends Component {
           <Button
             onPress={() => {
               this.spinnerRender()
-              this.props.loginRes(this.state,this.spinnerRender);
+              this.props.loginRes(this.state,this.spinnerRender,this.props.navigation);
               
             }}
             danger

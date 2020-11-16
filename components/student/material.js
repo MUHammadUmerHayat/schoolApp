@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-    Content,
     Card,
     CardItem,
     Body,
@@ -12,11 +11,12 @@ class Material extends Component {
     render() {
         const {
             iconName,
-            text
-        }=this.props
+            text,
+        }=this.props;
+        console.log(text,this.props.nav)
         return (
             <Card style={style.card}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>text==="Attendence"?this.props.nav.navigate('attendance'):""}>
                 <CardItem>
                         <View style={style.iconContainer}><Icon  style={style.icon} name={iconName}/></View>
                 </CardItem>

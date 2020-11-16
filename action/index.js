@@ -1,5 +1,4 @@
 import axios from "axios";
-import {Actions} from "react-native-router-flux"
 import {
 CURRENT_USER
 } from "./type";
@@ -7,7 +6,7 @@ CURRENT_USER
 
 const api="http://thenext-001-site1.ctempurl.com/api/AppLogin/GetUserLogin";
 
-export const loginRes=(d,spinnerRender)=>async(dispatch)=>{
+export const loginRes=(d,spinnerRender,navigation)=>async(dispatch)=>{
 const res=await axios.post(api,{
         UserName:d.userName,
         Password:d.password,
@@ -21,7 +20,7 @@ if(res.data.Error){
     spinnerRender();
     return null
 }else{
-    Actions.parents();
+    navigation.navigate('parentsDashboard')
     spinnerRender();
 }
 }

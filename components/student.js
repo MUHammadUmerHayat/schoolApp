@@ -14,17 +14,16 @@ import {
   Right,
   H3
 } from 'native-base';
-import {Actions} from "react-native-router-flux"
 export default class Student extends Component {
+
   render() {
     const api = "http://thenext-001-site1.ctempurl.com/";
     const { student } = this.props;
     const photoPath = student.PhotoPath.slice(6);
     const url = api + photoPath;
-
     return (
       <Card>
-        <TouchableOpacity onPress={()=>Actions.studentDetails(student)} style={styles.button}>
+        <TouchableOpacity onPress={()=>this.props.goToStudentDetail.navigate('studentDetail',student)} style={styles.button}>
           <CardItem>
             <Left>
               <Thumbnail large source={{ uri: url }} />

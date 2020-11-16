@@ -14,22 +14,14 @@ import {
 import StudentList from "./studentList";
 import { Link } from 'react-router-native';
 export default class ParentsDashboard extends Component {
+  
   render() {
+    const {navigation}=this.props
     return (
-      <Container style={{ paddingTop: 25 }}>
-        <Header style={{ backgroundColor: 'red' }}>
-          <Left>
-            <Button transparent>
-              <Icon style={{ color: 'white' }} name='menu' />
-            </Button>
-          </Left>
-          <Body>
-            <Title style={{ color: 'white' }}>Parents</Title>
-          </Body>
-          <Right />
-        </Header>
+      <Container>
+
         <Content>
-          <StudentList />
+          <StudentList goToStudentDetail={navigation}/>
         </Content>
       </Container>
     );

@@ -7,11 +7,11 @@ import Material from "./material"
 class StudentMaterialList extends Component {
     render() {
         return (
-            <View>
+            <Content>
                 <View style={style.container}>
                 <Material iconName="ios-notifications" text="Notification"/>
                 <Material iconName="md-refresh-circle" text="Circular"/>
-                <Material iconName="md-calendar" text="Attendence"/>
+                <Material nav={this.props.goTo} iconName="md-calendar" text="Attendence"/>
                 </View>
                 <View style={style.container}>
                 <Material iconName="md-clipboard" text="Challan"/>
@@ -28,7 +28,7 @@ class StudentMaterialList extends Component {
                 <Material iconName="ios-stopwatch" text="Events"/>
                 <Material iconName="ios-call" text="Contact"/>
                 </View>
-            </View>
+            </Content>
         );
     }
 }
