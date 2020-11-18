@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Image } from 'react-native';
+import { Platform, StyleSheet, Text, View, Image,VirtualizedList } from 'react-native';
 import DateTime from 'react-native-customize-selected-date';
 import _ from 'lodash';
 
@@ -7,8 +7,28 @@ export default class Attendance extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      time: ''
+      time: '',
+      present:[],
+      absent:[],
+      late:[],
+      holiday:[]
     }
+  }
+  componentDidMount(){
+    const presentData=_.filter(this.props.attendance,a=>a.status==="Present");
+    const absentData=_.filter(this.props.attendance,a=>a.status==="Absent");
+    const lateData=_.filter(this.props.attendance,a=>a.status==="Late");
+    const holidayData=_.filter(this.props.attendance,a=>a.status==="Holiday");
+    const present=_.map(presentData,d=>d.attendanceDate.slice(0,10))
+    const absent=_.map(absentData,d=>d.attendanceDate.slice(0,10))
+    const late=_.map(lateData,d=>d.attendanceDate.slice(0,10))
+    const holiday=_.map(holidayData,d=>d.attendanceDate.slice(0,10))
+    this.setState({
+      present,
+      absent,
+      late,
+      holiday
+    })
   }
 
   onChangeDate(date) {
@@ -16,16 +36,21 @@ export default class Attendance extends Component {
   }
 
   renderChildDay(day) {
-    if (_.includes(['2020-11-17', '2020-11-10'], day)) {
+    const data=_.map(this.props.attendance,(v)=>{
+      const date=v.attendanceDate.slice(0,10);
+      return {...v,attendanceDate:date}
+    })
+    
+    if (_.includes(this.state.present, day)) {
       return <Image source={require('../../assets/present.png')} style={styles.icLockRed} />
     }
-    if (_.includes(['2020-11-13'], day)) {
+    if (_.includes(this.state.absent, day)) {
       return <Image source={require('../../assets/absent.png')} style={styles.icLockRed} />
     }
-    if (_.includes(['2020-11-04',], day)) {
+    if (_.includes(this.state.late, day)) {
       return <Image source={require('../../assets/late.png')} style={styles.icLockRed} />
     }
-    if (_.includes(['2020-11-09',], day)) {
+    if (_.includes(this.state.holiday, day)) {
       return <Image source={require('../../assets/holiday.png')} style={styles.icLockRed} />
     }
   }

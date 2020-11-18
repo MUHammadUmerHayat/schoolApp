@@ -9,19 +9,19 @@ class StudentMaterialList extends Component {
         return (
             <Content>
                 <View style={style.container}>
-                <Material iconName="ios-notifications" text="Notification"/>
-                <Material iconName="md-refresh-circle" text="Circular"/>
-                <Material nav={this.props.goTo} iconName="md-calendar" text="Attendence"/>
+                <Material changeContent={this.props.changeContent} iconName="ios-notifications" text="Notification"/>
+                <Material changeContent={this.props.changeContent} iconName="md-refresh-circle" text="Circular"/>
+                <Material changeContent={this.props.changeContent}  iconName="md-calendar" text="Attendence"/>
                 </View>
                 <View style={style.container}>
-                <Material iconName="md-clipboard" text="Challan"/>
-                <Material iconName="ios-people" text="Guardians"/>
-                <Material iconName="ios-create" text="Diary"/>
+                <Material changeContent={this.props.changeContent} iconName="md-clipboard" text="Challan"/>
+                <Material changeContent={this.props.changeContent} iconName="ios-people" text="Guardians"/>
+                <Material changeContent={this.props.changeContent} iconName="ios-create" text="Diary"/>
                 </View>
                 <View style={style.container}>
-                <Material iconName="md-mail-open" text="Newsletter"/>
-                <Material iconName="md-list-box" text="Assessments"/>
-                <Material iconName="ios-timer" text="Timetable"/>
+                <Material changeContent={this.props.changeContent} iconName="md-mail-open" text="Newsletter"/>
+                <Material changeContent={this.props.changeContent} iconName="md-list-box" text="Assessments"/>
+                <Material changeContent={this.props.changeContent} iconName="ios-timer" text="Timetable"/>
                 </View>
                 <View style={style.container}>
                 <Material iconName="ios-list-box" text="Syllabus"/>

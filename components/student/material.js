@@ -13,10 +13,9 @@ class Material extends Component {
             iconName,
             text,
         }=this.props;
-        console.log(text,this.props.nav)
         return (
             <Card style={style.card}>
-                <TouchableOpacity onPress={()=>text==="Attendence"?this.props.nav.navigate('attendance'):""}>
+                <TouchableOpacity onPress={()=>this.props.changeContent(text)}>
                 <CardItem>
                         <View style={style.iconContainer}><Icon  style={style.icon} name={iconName}/></View>
                 </CardItem>
