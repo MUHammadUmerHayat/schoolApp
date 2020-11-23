@@ -6,6 +6,7 @@ import Login from "../components/login";
 import ParentsDashboard from "../components/parentDashboard";
 import StudentMaterialList from "../components/student/studentMaterialList";
 import Attendance from "../components/attendance/attendance";
+import HomeWork from "../components/homework/homework"
 import { Button, Container, Icon } from "native-base";
 
 const Stack = createStackNavigator();
@@ -37,6 +38,7 @@ export default function Routes() {
                         />
                     <Stack.Screen name="studentDetail" component={StudentDetail} />
                     <Stack.Screen name="attendance" component={Attendance} />
+                    <Stack.Screen name="homeWork" component={HomeWork} />
                 </Stack.Navigator>
             </NavigationContainer>
         </Container>

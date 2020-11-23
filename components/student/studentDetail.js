@@ -8,31 +8,13 @@ import {
 } from "native-base"
 import StudentMaterialLiSt from './studentMaterialList';
 class StudentDetail extends Component {
-    state={
-        renderContent:'material'
-    }
 
-
-    changeRenderContent=(content)=>{
-        this.setState({renderContent:content})
-    }
-
-
-    renderContent=()=>{
-        if(this.state.renderContent==="material"){
-            return <StudentMaterialLiSt changeContent={this.changeRenderContent}/>
-        }
-        if(this.state.renderContent==="Attendence"){
-            return <Attendance attendance={this.props.route.params.StudentAttendances}/>
-        }
-        
-    }
     render() {
         return (
             <Container style={style.container}>
                 <StudentProfile student={this.props.route.params}/>
                 <Content>
-                {this.renderContent()}
+                <StudentMaterialLiSt student={this.props.route.params}/>
                 </Content>
             </Container>
         );

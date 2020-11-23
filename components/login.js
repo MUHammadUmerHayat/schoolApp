@@ -34,7 +34,7 @@ class Login extends Component {
           </Item>
           <Item error={this.props.currentUser.Error ? true : false}>
             <Icon active name='ios-key' />
-            <Input onChangeText={v => this.setState({ password: v })} placeholder='Password' />
+            <Input onChangeText={v => this.setState({ password: v })} secureTextEntry placeholder='Password' />
           </Item>
           <Text>{this.props.currentUser.Error ? this.props.currentUser.Error : null}</Text>
           <Button

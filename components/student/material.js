@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
     Card,
     CardItem,
@@ -6,16 +7,19 @@ import {
     Icon,
     Text,
 } from "native-base";
-import {View,TouchableOpacity} from "react-native"
-class Material extends Component {
-    render() {
+import {View,TouchableOpacity} from "react-native";
+
+function Material(props){
+    
+        const navigation=useNavigation();
         const {
             iconName,
             text,
-        }=this.props;
+            go
+        }=props;
         return (
             <Card style={style.card}>
-                <TouchableOpacity onPress={()=>this.props.changeContent(text)}>
+                <TouchableOpacity onPress={()=>navigation.navigate(go,props.student)}>
                 <CardItem>
                         <View style={style.iconContainer}><Icon  style={style.icon} name={iconName}/></View>
                 </CardItem>
@@ -27,7 +31,6 @@ class Material extends Component {
                 </TouchableOpacity>
             </Card>
         );
-    }
 }
 const style={
     card:{

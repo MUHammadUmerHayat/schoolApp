@@ -76,7 +76,7 @@ const style = {
         top: -105
     },
     parent: {
-        position: 'fixed',
+        position: 'relative',
         height: 240
     },
     background: {

@@ -11,7 +11,7 @@ class StudentMaterialList extends Component {
                 <View style={style.container}>
                 <Material changeContent={this.props.changeContent} iconName="ios-notifications" text="Notification"/>
                 <Material changeContent={this.props.changeContent} iconName="md-refresh-circle" text="Circular"/>
-                <Material changeContent={this.props.changeContent}  iconName="md-calendar" text="Attendence"/>
+                <Material go="attendance" student={this.props.student} changeContent={this.props.changeContent}  iconName="md-calendar" text="Attendence"/>
                 </View>
                 <View style={style.container}>
                 <Material changeContent={this.props.changeContent} iconName="md-clipboard" text="Challan"/>
@@ -20,7 +20,7 @@ class StudentMaterialList extends Component {
                 </View>
                 <View style={style.container}>
                 <Material changeContent={this.props.changeContent} iconName="md-mail-open" text="Newsletter"/>
-                <Material changeContent={this.props.changeContent} iconName="md-list-box" text="Assessments"/>
+                <Material go="homeWork" student={this.props.student} changeContent={this.props.changeContent} iconName="md-list-box" text="Assessments"/>
                 <Material changeContent={this.props.changeContent} iconName="ios-timer" text="Timetable"/>
                 </View>
                 <View style={style.container}>

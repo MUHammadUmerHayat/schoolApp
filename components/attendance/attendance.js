@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Image,VirtualizedList } from 'react-native';
+import { Platform, StyleSheet, Text, View, Image } from 'react-native';
+import {Container,Content} from "native-base"
 import DateTime from 'react-native-customize-selected-date';
+import StudentProfile from "../student/studentProfile";
 import _ from 'lodash';
 
 export default class Attendance extends Component {
@@ -15,10 +17,13 @@ export default class Attendance extends Component {
     }
   }
   componentDidMount(){
-    const presentData=_.filter(this.props.attendance,a=>a.status==="Present");
-    const absentData=_.filter(this.props.attendance,a=>a.status==="Absent");
-    const lateData=_.filter(this.props.attendance,a=>a.status==="Late");
-    const holidayData=_.filter(this.props.attendance,a=>a.status==="Holiday");
+
+    const {StudentAttendances}=this.props.route.params;
+    console.log('att',StudentAttendances)
+    const presentData=_.filter(StudentAttendances,a=>a.status==="Present");
+    const absentData=_.filter(StudentAttendances,a=>a.status==="Absent");
+    const lateData=_.filter(StudentAttendances,a=>a.status==="Late");
+    const holidayData=_.filter(StudentAttendances,a=>a.status==="Holiday");
     const present=_.map(presentData,d=>d.attendanceDate.slice(0,10))
     const absent=_.map(absentData,d=>d.attendanceDate.slice(0,10))
     const late=_.map(lateData,d=>d.attendanceDate.slice(0,10))
@@ -57,7 +62,10 @@ export default class Attendance extends Component {
 
   render() {
     return (
-      <View>
+      <Container>
+        <StudentProfile student={this.props.route.params}/>
+        <Content>
+        <View>
         <DateTime
           containerStyle={{ backgroundColor: 'lightgrey' }}
           currentDayStyle={{ color: 'white' }}
@@ -88,6 +96,8 @@ export default class Attendance extends Component {
             </View>
         </View>    
       </View>
+        </Content>
+      </Container>
     );
   }
 }
