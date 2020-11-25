@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Image} from "react-native"
 import {
   Container,
   Header,
@@ -9,7 +10,8 @@ import {
   Button,
   Text,
   H1,
-  Spinner
+  Spinner,
+  Body
 } from 'native-base';
 import { connect } from "react-redux";
 import * as action from "../action";
@@ -25,9 +27,9 @@ class Login extends Component {
   }
   render() {
     return (
-      <Container style={{ display: 'flex', alignItems: 'center' }}>
-        <Content style={{ width: '90%' }}>
-          <H1 style={{ margin: 80, textAlign: 'center' }}>Alpha School</H1>
+      <Container>
+        <Body style={{ width: '80%',display:'flex',justifyContent:'center',alignItems:'center' }}>
+          <Image style={{width:150, height:150,marginBottom:20}} source={require('../assets/logo.png')}/>
           <Item error={this.props.currentUser.Error ? true : false}>
             <Icon active name='md-contacts' />
             <Input onChangeText={v => this.setState({ userName: v })} placeholder='User Name' />
@@ -48,7 +50,7 @@ class Login extends Component {
             style={{ marginTop: 40 }}>
               {this.state.loading?<Spinner color="white"/>:<Text>Login</Text>}
           </Button>
-        </Content>
+        </Body>
       </Container>
     );
   }

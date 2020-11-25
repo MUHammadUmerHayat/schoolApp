@@ -11,16 +11,12 @@ class StudentDetail extends Component {
 
     render() {
         return (
-            <Container style={style.container}>
+            <Container>
                 <StudentProfile student={this.props.route.params}/>
-                <Content>
                 <StudentMaterialLiSt student={this.props.route.params}/>
-                </Content>
             </Container>
         );
     }
-}
-const style={
 }
 
 

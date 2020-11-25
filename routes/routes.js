@@ -8,7 +8,8 @@ import StudentMaterialList from "../components/student/studentMaterialList";
 import Attendance from "../components/attendance/attendance";
 import HomeWork from "../components/homework/homework"
 import { Button, Container, Icon } from "native-base";
-
+import PdfView from "../components/homework/pdfview";
+import Challan from "../components/challan/challan";
 const Stack = createStackNavigator();
 
 export default function Routes() {
@@ -36,9 +37,11 @@ export default function Routes() {
                                 headerLeft: () => <Button transparent><Icon style={{ color: 'white' }} name="menu" /></Button>
                             }}
                         />
-                    <Stack.Screen name="studentDetail" component={StudentDetail} />
-                    <Stack.Screen name="attendance" component={Attendance} />
-                    <Stack.Screen name="homeWork" component={HomeWork} />
+                    <Stack.Screen options={{title:'Student Information'}} name="studentDetail" component={StudentDetail} />
+                    <Stack.Screen options={{title:'Attendance'}} name="attendance" component={Attendance} />
+                    <Stack.Screen options={{title:'Homework'}} name="homeWork" component={HomeWork} />
+                    <Stack.Screen options={{title:'Homework PDF'}} name="pdfView" component={PdfView} />
+                    <Stack.Screen options={{title:'Fee Challan'}} name="challan" component={Challan} />
                 </Stack.Navigator>
             </NavigationContainer>
         </Container>

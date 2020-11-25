@@ -17,16 +17,23 @@ export default class HomeWorkList extends Component {
         const updateDataArray=student.StudentHomeWork.map((h)=>{
             return{
             title:<View style={styles.container}><Text>{h.CourseName}</Text><Text style={styles.date} note>{h.Date.slice(0,10)}</Text></View>,
-            content:<View><Text style={styles.content}>{h.HomeworkText}</Text><View style={styles.content}><Button style={styles.button}><Text>PDF</Text></Button></View></View>
+            content:<View><Text style={styles.content}>{h.HomeworkText}</Text><View style={styles.content}><Button style={styles.button} onPress={()=>this.props.goToPdf('pdfView',h.HomeworkPath)}><Text>PDF</Text></Button></View></View>
             }
         })
         this.setState({dataArray:updateDataArray})
     }
   render() {
     return (
-      <Content padder>
-          <Accordion  dataArray={this.state.dataArray} expanded={0}/>
-      </Content>
+          <Content padder>
+          <Accordion  
+            dataArray={this.state.dataArray}
+            icon="add"
+            expandedIcon="remove"
+            iconStyle={{ color: "green",fontSize:30 }}
+            expandedIconStyle={{ color: "red",fontSize:30 }}
+            />
+          </Content>
+
     );
   }
 }

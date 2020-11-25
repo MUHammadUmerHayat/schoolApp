@@ -37,7 +37,7 @@ class StudentProfile extends Component {
                                 <Text note>Address: {Stu_PerAddress}</Text>
                             </Body>
                         </CardItem>
-                        <CardItem>
+                        <CardItem style={{height:40}}>
                             <Left>
                                 <Text note>Class: Kg 1</Text>
                             </Left>
@@ -77,7 +77,7 @@ const style = {
     },
     parent: {
         position: 'relative',
-        height: 240
+        height: 200
     },
     background: {
         height: 100,

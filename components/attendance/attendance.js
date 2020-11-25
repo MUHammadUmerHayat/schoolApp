@@ -67,9 +67,12 @@ export default class Attendance extends Component {
         <Content>
         <View>
         <DateTime
-          containerStyle={{ backgroundColor: 'lightgrey' }}
+          containerStyle={{ backgroundColor: 'lightgrey',position:'relative',top:-40 }}
           currentDayStyle={{ color: 'white' }}
           weekdayStyle={{ color: 'black' }}
+          warpDayStyle={{backgroundColor:'#EEEEEE',borderColor:'lightgrey'}}
+          notCurrentDayOfMonthStyle={{color:'black'}}
+          textDayStyle={{color:'grey'}}
           date={this.state.time}
           changeDate={(date) => this.onChangeDate(date)}
           format='YYYY-MM-DD'
@@ -115,7 +118,9 @@ const styles = StyleSheet.create({
     height: 25,
   },
   box:{
-    marginTop:10,
+    position:'relative',
+    top:-30,
+    marginBottom:20,
     marginRight:10,
     marginLeft:10,
     display:'flex',
