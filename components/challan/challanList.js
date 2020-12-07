@@ -14,7 +14,7 @@ class ChallanList extends Component {
         const {FeeVoucher}=this.props.student
         return FeeVoucher.map((feeVoucher)=>{
             return (
-                <Card>
+                <Card key={feeVoucher.Voucher_No}>
                     <CardItem bordered style={{backgroundColor:'#F0F0F0'}}>
                         <Left>
                             <Text>Voucher No</Text>

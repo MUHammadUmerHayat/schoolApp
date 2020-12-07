@@ -19,7 +19,6 @@ export default class Attendance extends Component {
   componentDidMount(){
 
     const {StudentAttendances}=this.props.route.params;
-    console.log('att',StudentAttendances)
     const presentData=_.filter(StudentAttendances,a=>a.status==="Present");
     const absentData=_.filter(StudentAttendances,a=>a.status==="Absent");
     const lateData=_.filter(StudentAttendances,a=>a.status==="Late");

@@ -12,7 +12,6 @@ export default class HomeWorkList extends Component {
     }
     componentDidMount(){
         const {student}=this.props;
-        console.log('homeworklist',student);
         const url='http://thenext-001-site1.ctempurl.com/files/homeworks/'
         const updateDataArray=student.StudentHomeWork.map((h)=>{
             return{

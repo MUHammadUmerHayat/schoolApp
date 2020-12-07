@@ -10,10 +10,14 @@ class StudentMaterialList extends Component {
             <Content padder>
                 <View style={style.container}>
                 <Material 
+                go="notification" 
+                student={this.props.student}
                 iconName="ios-notifications" 
                 text="Notification"
                 />
                 <Material 
+                go="circular" 
+                student={this.props.student}
                 iconName="md-refresh-circle" 
                 text="Circular"
                 />
@@ -32,16 +36,22 @@ class StudentMaterialList extends Component {
                 text="Challan"
                 />
                 <Material  
+                go="guardians" 
+                student={this.props.student}
                 iconName="ios-people" 
                 text="Guardians"
                 />
                 <Material  
+                go="diary" 
+                student={this.props.student}
                 iconName="ios-create" 
                 text="Diary"
                 />
                 </View>
                 <View style={style.container}>
                 <Material  
+                go="newsletter" 
+                student={this.props.student}
                 iconName="md-mail-open" 
                 text="Newsletter"
                 />
@@ -52,20 +62,28 @@ class StudentMaterialList extends Component {
                 text="Assessments"
                 />
                 <Material  
+                go="timetable" 
+                student={this.props.student}
                 iconName="ios-timer" 
                 text="Timetable"
                 />
                 </View>
                 <View style={style.container}>
                 <Material 
+                go="syllabus" 
+                student={this.props.student}
                 iconName="ios-list-box" 
                 text="Syllabus"
                 />
                 <Material 
+                go="events" 
+                student={this.props.student}
                 iconName="ios-stopwatch" 
                 text="Events"
                 />
                 <Material 
+                go="contact" 
+                student={this.props.student}
                 iconName="ios-call" 
                 text="Contact"
                 />
