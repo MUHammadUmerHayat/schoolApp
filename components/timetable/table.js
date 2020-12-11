@@ -1,40 +1,102 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
- 
-export default class TableView extends Component {
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Alert,
+} from 'react-native';
+import TimeTableView, { genTimeBlock } from 'react-native-timetable';
+const events_data = [
+  {
+    title: "Math",
+    startTime: genTimeBlock("MON", 9),
+    endTime: genTimeBlock("MON", 10, 50),
+    extra_descriptions: ["Kim", "Lee"],
+  },
+  {
+    title: "Math",
+    startTime: genTimeBlock("WED", 9),
+    endTime: genTimeBlock("WED", 10, 50),
+    extra_descriptions: ["Kim", "Lee"],
+  },
+  {
+    title: "Physics",
+    startTime: genTimeBlock("MON", 11),
+    endTime: genTimeBlock("MON", 11, 50),
+    extra_descriptions: ["Einstein"],
+  },
+  {
+    title: "Physics",
+    startTime: genTimeBlock("WED", 11),
+    endTime: genTimeBlock("WED", 11, 50),
+    extra_descriptions: ["Einstein"],
+  },
+  {
+    title: "Mandarin",
+    startTime: genTimeBlock("TUE", 9),
+    endTime: genTimeBlock("TUE", 10, 50),
+    location: "Language Center",
+    extra_descriptions: ["Chen"],
+  },
+  {
+    title: "Japanese",
+    startTime: genTimeBlock("FRI", 9),
+    endTime: genTimeBlock("FRI", 10, 50),
+    extra_descriptions: ["Nakamura"],
+  },
+  {
+    title: "Club Activity",
+    startTime: genTimeBlock("THU", 9),
+    endTime: genTimeBlock("THU", 10, 50)
+  },
+  {
+    title: "Club Activity",
+    startTime: genTimeBlock("FRI", 13, 30),
+    endTime: genTimeBlock("FRI", 14, 50),
+  },
+];
+
+export default class App extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      tableHead: ['No', 'Course', 'Day', 'Start Time','End Time'],
-      tableData: [
-      ]
-    }
+    this.numOfDays = 5;
+    this.pivotDate = genTimeBlock('mon');
   }
- componentDidMount(){
-     const course=this.props.student.StudentClassRoutine.map((i,index)=>[index+1,i.Course,i.Day,i.StartTime,i.EndTimne]);
-     this.setState({tableData:course})
- }
+
+  scrollViewRef = (ref) => {
+    this.timetableRef = ref;
+  };
+
+  onEventPress = (evt) => {
+    Alert.alert("onEventPress", JSON.stringify(evt));
+  };
+
   render() {
-    const state = this.state;
-    console.log('hellowsd',this.props.student.StudentClassRoutine);
     return (
-      <View style={styles.container}>
-        <Table borderStyle={{borderWidth: 1}}>
-          <Row data={state.tableHead} flexArr={[1]} style={styles.head} textStyle={styles.text}/>
-          <TableWrapper style={styles.wrapper}>
-            <Rows data={state.tableData} flexArr={[1, 1]} style={styles.row} textStyle={styles.text}/>
-          </TableWrapper>
-        </Table>
-      </View>
-    )
+      <SafeAreaView style={{flex: 1}}>
+        <View style={styles.container}>
+          <TimeTableView
+            scrollViewRef={this.scrollViewRef}
+            events={events_data}
+            pivotTime={9}
+            pivotDate={this.pivotDate}
+            numberOfDays={this.numOfDays}
+            onEventPress={this.onEventPress}
+            headerStyle={styles.headerStyle}
+            formatDateHeader="dddd"
+            locale="en"
+          />
+        </View>
+      </SafeAreaView>
+    );
   }
-}
- 
+};
+
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
-  head: {  height: 40,  backgroundColor: '#f1f8ff'  },
-  wrapper: { flexDirection: 'row' },
-  row: {  height: 28  },
-  text: { textAlign: 'center' }
+  headerStyle: {
+    backgroundColor: '#81E1B8'
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#F8F8F8',
+  },
 });

@@ -1,14 +1,19 @@
-import React from 'react';
-import {Container,Content,H1} from "native-base"
-function Circular(props) {
-    return (
-        <Container>
-            <Content>
-                <H1>Comming Soon</H1>
-            </Content>
-            
-        </Container>
-    );
+import React,{Component} from 'react';
+import StudentProfile from "../student/studentProfile";
+import NoticeList from "./noticeList"
+import {Container} from "native-base";
+
+class Circular extends Component{
+    render(){
+        return (
+            <Container>
+            <StudentProfile student={this.props.route.params}/>
+            <NoticeList student={this.props.route.params}/>
+          </Container>
+        );
+
+    }
+
 }
 
 export default Circular;
